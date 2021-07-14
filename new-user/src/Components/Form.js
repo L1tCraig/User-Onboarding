@@ -3,23 +3,12 @@ import React from 'react'
 export default function Form(data) {
     const { values, update, submit } = data
     
-    const onChange = evt => {
-        const name = evt.target.name
-        const value = evt.target.value
-        update(name, value)
-    }
-    
-    const onSubmit = event => {
-        event.preventDefault()
-        submit()
-    }
-debugger
    return (
-       <form onSubmit={onSubmit}>
+       <form onSubmit={submit}>
            <div>
                <label>Name
                    <input type='text' 
-                   onChange={onChange} 
+                   onChange={update} 
                    name='name' 
                    placeholder='First and Last'
                    value={values.name}/>      
@@ -27,7 +16,7 @@ debugger
 
                <lable>User Name
                    <input type='text' 
-                   onChange={onChange} 
+                   onChange={update} 
                    name='username'
                    placeholder='Letters and Numbers' 
                    value={values.username}/>
@@ -35,7 +24,7 @@ debugger
 
                <label>Email
                    <input type='email'
-                   onchange={onChange} 
+                   onChange={update} 
                    name='email'
                    placeholder='email@domain.com'
                    value={values.email}/>
@@ -43,7 +32,7 @@ debugger
 
                <label>Password
                    <input type='password'
-                   onChange={onChange} 
+                   onChange={update} 
                    name='password'
                    placeholder='min 6 characters'
                    value={values.password}/>
@@ -52,14 +41,14 @@ debugger
                <label>
                    <a href='https://www.google.com/'>Terms of Service</a>
                    <input type='checkbox'
-                   onChange={onChange}
+                   onChange={update}
                    name='terms'
                    value={values.terms}></input>
                </label>
 
                <label>Guess
                    <input type='text'
-                   onChange={onChange}
+                   onChange={update}
                    name='guess'
                    placeholder='guess'
                    value={values.guess}></input>                

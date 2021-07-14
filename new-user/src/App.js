@@ -15,21 +15,23 @@ export default function App() {
   const [users, setUsers] = useState([])
   const [formValues, setFormValues] = useState(blankForm)
 
-  const formUpdate = (inputName, inputValue) => {
+  const formUpdate = hapenstance => {
+    const { name, value } = hapenstance.target
     setFormValues({
       ...formValues,
-      [inputName]: inputValue
+      [name]: value
     })
   }
 
-  const submitForm = () => {
+  const submitForm = (e) => {
+    e.preventDefault()
     const { name, username, email, password, terms } = formValues
     setUsers([
       ...users,
       {
         name: name.trim(),
         username: username.trim(),
-        email: email.trim(),
+        email: email,
         password: password,
         terms: terms
       }
