@@ -1,11 +1,13 @@
 import React from 'react'
 
 export default function Form(data) {
-    const { values, update, submit } = data
-    
+    const { values, update, submit, disabled, errors, guess } = data
+     
    return (
        <form onSubmit={submit}>
            <div>
+
+           <h4 style={{ color: 'red' }}>{errors.name}</h4>
                <label>Name
                    <input type='text' 
                    onChange={update} 
@@ -14,6 +16,7 @@ export default function Form(data) {
                    value={values.name}/>      
                </label>
 
+               <h4 style={{ color: 'red' }}>{errors.username}</h4>
                <lable>User Name
                    <input type='text' 
                    onChange={update} 
@@ -22,6 +25,7 @@ export default function Form(data) {
                    value={values.username}/>
                </lable>
 
+               <h4 style={{ color: 'red' }}>{errors.email}</h4>
                <label>Email
                    <input type='email'
                    onChange={update} 
@@ -30,6 +34,7 @@ export default function Form(data) {
                    value={values.email}/>
                </label>
 
+               <h4 style={{ color: 'red' }}>{errors.password}</h4>
                <label>Password
                    <input type='password'
                    onChange={update} 
@@ -37,7 +42,16 @@ export default function Form(data) {
                    placeholder='min 6 characters'
                    value={values.password}/>
                </label>
-               
+
+               <h4 style={{ color: 'red' }}>{errors.confirm}</h4>
+               <label>Confirm Password
+                   <input type='password'
+                   onChange={update}
+                   name='confirm'
+                   placeholder='match password'
+                   value={values.confirm}/>
+               </label>
+
                <label>
                    <a href='https://www.google.com/'>Terms of Service</a>
                    <input type='checkbox'
@@ -53,7 +67,8 @@ export default function Form(data) {
                    placeholder='guess'
                    value={values.guess}></input>                
                </label>
-               <button>Submit</button>
+
+               <button disabled={disabled}>Submit</button>
 
            </div>
        </form>
